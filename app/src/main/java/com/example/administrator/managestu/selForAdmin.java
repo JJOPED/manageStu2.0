@@ -45,9 +45,9 @@ public class selForAdmin extends AppCompatActivity {
 
     private void initResult() {
         //Log.w("W","!!!!");
-        Result res1 = new Result("1","2012-2015","qs","yz");
+        Result res1 = new Result("1","2012-2015","qsxisxbh","yzdwc");
         resList.add(res1);
-        Result res2 = new Result("2","2015-2019","fj","xd");
+        Result res2 = new Result("2","2015-2019","fjqxdxcd","xdceqdcx");
         resList.add(res2);
     }
 }

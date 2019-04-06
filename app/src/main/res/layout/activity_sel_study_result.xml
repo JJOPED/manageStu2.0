@@ -10,7 +10,7 @@
         android:id="@+id/r_number"
         android:textSize="20sp"
         android:text="序号"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
         android:id="@+id/r_time"
         android:textSize="20sp"
         android:text="时间"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/r_number"/>
@@ -29,7 +29,7 @@
         android:id="@+id/r_school"
         android:textSize="20sp"
         android:text="学校"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/r_time"/>
@@ -38,7 +38,7 @@
         android:id="@+id/r_confirmname"
         android:textSize="20sp"
         android:text="证明人"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/r_school" />

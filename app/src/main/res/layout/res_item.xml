@@ -9,33 +9,40 @@
     <TextView
         android:id="@+id/res_number"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"/>
+        app:layout_constraintHorizontal_bias="0.09"/>
 
     <TextView
         android:id="@+id/res_time"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/res_number"/>
 
     <TextView
         android:id="@+id/res_school"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/res_time"/>
 
     <TextView
         android:id="@+id/res_confirmname"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="80dp"
         app:layout_constraintStart_toEndOf="@+id/res_school" />
 
