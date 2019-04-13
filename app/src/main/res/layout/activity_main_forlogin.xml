@@ -19,6 +19,7 @@
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintVertical_bias="0.05"/>
 
+    <!--
     <TextView
         android:id="@+id/textAdd"
         android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
         app:layout_constraintStart_toEndOf="@+id/textAdd"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.175" />
+    -->
 
     <TextView
         android:id="@+id/textPwd"
@@ -63,15 +65,16 @@
         android:id="@+id/editPwd"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:hint="password"
-        android:textSize="18sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editAdd"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textPwd"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintStart_toEndOf="@id/textPwd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintVertical_bias="0.275" />
 
     <TextView
         android:id="@+id/textState"
@@ -92,12 +95,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:hint="0 student 1 school"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintTop_toBottomOf="@id/editPwd"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textState"
+        app:layout_constraintStart_toEndOf="@id/textState"
         app:layout_constraintVertical_bias="0.075" />
 
     <Button
@@ -109,7 +112,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="注册"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:onClick="buttonofReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +130,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="登录"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:onClick="buttonofLog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

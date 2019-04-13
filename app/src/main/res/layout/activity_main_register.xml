@@ -19,6 +19,7 @@
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintVertical_bias="0.05" />
 
+    <!--
     <TextView
         android:id="@+id/textRAdd"
         android:layout_width="wrap_content"
@@ -46,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintVertical_bias="0.143" />
+    -->
 
     <TextView
         android:id="@+id/textRName"
@@ -53,12 +55,12 @@
         android:layout_height="wrap_content"
         android:text="姓名："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRAdd"
+        app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.040"/>
+        app:layout_constraintVertical_bias="0.045"/>
 
     <EditText
         android:id="@+id/editRName"
@@ -68,12 +70,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRAdd"
+        app:layout_constraintTop_toBottomOf="@id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <TextView
         android:id="@+id/textRPwd"
@@ -101,10 +103,10 @@
         app:layout_constraintStart_toEndOf="@+id/textRPwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0090" />
+        app:layout_constraintVertical_bias="0.0094" />
 
     <TextView
-        android:id="@+id/textRSexy"
+        android:id="@+id/textRSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="性别："
@@ -117,19 +119,19 @@
         app:layout_constraintVertical_bias="0.040"/>
 
     <EditText
-        android:id="@+id/editRSexy"
+        android:id="@+id/editRSex"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:hint="sexy"
+        android:hint="sex"
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintTop_toBottomOf="@id/editRPwd"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textRSexy"
+        app:layout_constraintStart_toEndOf="@+id/textRSex"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0070" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/textRAge"
@@ -137,7 +139,7 @@
         android:layout_height="wrap_content"
         android:text="年龄："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRSexy"
+        app:layout_constraintTop_toBottomOf="@+id/textRSex"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,12 +154,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRSexy"
+        app:layout_constraintTop_toBottomOf="@id/editRSex"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRAge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0050" />
+        app:layout_constraintVertical_bias="0.0060" />
 
     <TextView
         android:id="@+id/textRState"
@@ -185,7 +187,7 @@
         app:layout_constraintStart_toEndOf="@+id/textRState"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0030" />
+        app:layout_constraintVertical_bias="0.0055" />
 
     <Button
         android:id="@+id/buttonROK"

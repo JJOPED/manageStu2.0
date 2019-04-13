@@ -1,6 +1,7 @@
 package com.example.administrator.managestu;
 
 public class Person {
+
     String addressofPerson;
     String passwordofPerson;
     String nameofPerson;
