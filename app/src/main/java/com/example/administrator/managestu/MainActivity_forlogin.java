@@ -54,7 +54,7 @@ public class MainActivity_forlogin extends AppCompatActivity {
         ethInfo = this.getIntent().getExtras();
         useraddress = ethInfo.getString("useraddress");
         privatekey = ethInfo.getString("privatekey");
-        Log.w("!!!",privatekey);
+        //Log.w("!!!",privatekey);
 
         initWeb3j();
         initCredential(privatekey);
@@ -182,9 +182,9 @@ public class MainActivity_forlogin extends AppCompatActivity {
             String result;
             StudyManage studyManage = StudyManage.load(contractAdd,web3j,credentials,gasPrice,gasLimit);
             try {
-                pname = studyManage.readPersonInfoAfterLogin(useraddress).send().getValue1();
+                /*pname = studyManage.readPersonInfoAfterLogin(useraddress).send().getValue1();
                 psex = studyManage.readPersonInfoAfterLogin(useraddress).send().getValue2();
-                page = studyManage.readPersonInfoAfterLogin(useraddress).send().getValue3().toString();
+                page = studyManage.readPersonInfoAfterLogin(useraddress).send().getValue3().toString();*/
                 resofLogin = studyManage.login(useraddress,password,state).send();
                 result = "ReadTask is ok!";
                 //Log.w("!!!","read");
@@ -202,9 +202,9 @@ public class MainActivity_forlogin extends AppCompatActivity {
             Bundle loginInfo = new Bundle();//存储登录的信息以及地址和私钥
             loginInfo.putString("useraddress",useraddress);
             loginInfo.putString("privatekey",privatekey);
-            loginInfo.putString("name",pname);
+            /*loginInfo.putString("name",pname);
             loginInfo.putString("sex",psex);
-            loginInfo.putString("age",page);
+            loginInfo.putString("age",page);*/
             if(resofLogin){
                 if(state.toString().equals("0")){
                     Intent tostuLogin = new Intent(MainActivity_forlogin.this,stuLogin.class);
