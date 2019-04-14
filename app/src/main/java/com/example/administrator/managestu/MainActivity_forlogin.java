@@ -28,7 +28,7 @@ public class MainActivity_forlogin extends AppCompatActivity {
     String useraddress;// ="0xC60D8DE6625B9DDbC579e502dEF8c3E8933b8A3b" ;//账户地址
     String privatekey;//= "C16E811A0F025ED8165699745D5CC927CC7FBAE8AA29CF036A99F0E75F55B950";//账户私钥
     String testUrl = "https://ropsten.infura.io/v3/06e4b5119d0240c6afb64bbb988e9421";//以太坊测试网络
-    String contractAdd = "0x09463f7413fc287ee34510c8be94565a60463844";
+    String contractAdd = "0x074f662cccc086bb12c8dc0efa38e02f53e2c378";
     Web3j web3j;
     Credentials credentials;
     long minigaslimit = 210000*2L;//gaslimit min 210000
@@ -41,11 +41,10 @@ public class MainActivity_forlogin extends AppCompatActivity {
     EditText editState;
     BigInteger state;
 
+    boolean isregistered = false;
     boolean resofLogin;
-    //Person loginPerson;
     String pname, psex, page;
 
-    //publicFunction publicFunction = new publicFunction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +54,10 @@ public class MainActivity_forlogin extends AppCompatActivity {
         ethInfo = this.getIntent().getExtras();
         useraddress = ethInfo.getString("useraddress");
         privatekey = ethInfo.getString("privatekey");
+        Log.w("!!!",privatekey);
 
         initWeb3j();
         initCredential(privatekey);
-
-        /*publicFunction.setPrivatekey(" ssdc");
-        publicFunction.setUseraddress("sdDCC");
-        publicFunction.initWeb3j();
-        web3j = publicFunction.getWeb3j();*/
 
         editPwd = (EditText) findViewById(R.id.editPwd);
         editState = (EditText) findViewById(R.id.editState);
@@ -86,12 +81,12 @@ public class MainActivity_forlogin extends AppCompatActivity {
 
         //调用智能合约的login函数，返回一个bool值，判断是否正确登录
         //调用智能合约的readPersonInfoAfterLogin，返回useraddress对应的个人信息
-        readfromblock();
-
+        //readfromblock();
+        checkRegblock();
     }
 
     private void wrrongPwdDialog() {
-        AlertDialog.Builder wrrongPwd = new AlertDialog.Builder(this);
+        AlertDialog.Builder wrrongPwd = new AlertDialog.Builder(MainActivity_forlogin.this);
         wrrongPwd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -135,7 +130,52 @@ public class MainActivity_forlogin extends AppCompatActivity {
         task.execute(testUrl);
     }
 
-    //readTask用来调用智能合约的函数
+    //checkregister
+    private  class checkTask extends  AsyncTask<String, String, String> {
+        @Override
+        protected  String doInBackground(String... params) {
+            String result;
+            StudyManage studyManage = StudyManage.load(contractAdd,web3j,credentials,gasPrice,gasLimit);
+            try {
+                isregistered = studyManage.checkRegist(useraddress).send();
+                result = String.valueOf(isregistered);
+                Log.w("!!!","check:"+result);
+            } catch (Exception e) {
+                result = e.getMessage();
+                Log.w("!!!",e.toString());
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
+
+            if(isregistered){
+                readfromblock();
+            }
+            else{
+                AlertDialog.Builder hasRegisted = new AlertDialog.Builder(MainActivity_forlogin.this);
+                hasRegisted.setTitle("提示");
+                hasRegisted.setMessage("此账号未注册，请注册后登录。");
+                hasRegisted.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                hasRegisted.show();
+            }
+        }
+    }
+
+    void checkRegblock(){
+        checkTask wtask = new checkTask();
+        wtask.execute();
+    }
+
+    //readTask用来调用智能合约的函数获取个人基本信息
     private  class readTask extends  AsyncTask<String, String, String> {
         @Override
         protected  String doInBackground(String... params) {
@@ -159,15 +199,9 @@ public class MainActivity_forlogin extends AppCompatActivity {
         protected void onPostExecute(String result){
             super.onPostExecute(result);
             Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
-            /*if(!resofLogin){
-                wrrongPwdDialog();
-            }*/
             Bundle loginInfo = new Bundle();//存储登录的信息以及地址和私钥
             loginInfo.putString("useraddress",useraddress);
             loginInfo.putString("privatekey",privatekey);
-            //loginInfo.putString("name",loginPerson.nameofPerson);
-            //loginInfo.putString("sex",loginPerson.sexofPerson);
-            //loginInfo.putString("age",loginPerson.ageofPerson);
             loginInfo.putString("name",pname);
             loginInfo.putString("sex",psex);
             loginInfo.putString("age",page);

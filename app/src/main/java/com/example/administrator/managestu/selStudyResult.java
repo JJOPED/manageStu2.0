@@ -1,9 +1,12 @@
 package com.example.administrator.managestu;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,7 +26,7 @@ public class selStudyResult extends AppCompatActivity {
     String privatekey;
 
     String testUrl = "https://ropsten.infura.io/v3/06e4b5119d0240c6afb64bbb988e9421";//以太坊测试网络
-    String contractAdd = "0x10f3ef0c11fe88fa205fd4630a5e7dda41d3faf1";
+    String contractAdd = "0x074f662cccc086bb12c8dc0efa38e02f53e2c378";
     Web3j web3j;
     Credentials credentials;
     long minigaslimit = 210000*2L;//gaslimit min 210000
@@ -35,8 +38,8 @@ public class selStudyResult extends AppCompatActivity {
     String recordTime;
     String recordSchool;
     String recordConfirm;
-    Boolean retRecState = false;
-    Boolean retReadAllState = false;
+    //Boolean retRecState = false;
+    //Boolean retReadAllState = false;
 
 
     ResAdapter adapter;
@@ -62,13 +65,22 @@ public class selStudyResult extends AppCompatActivity {
 
     private void initResult() {
         readRnumfromblock();
+        Log.w("W","initList");
 
         /*Result res1 = new Result("1","2012-2015","qsxwqdxcd","yzedxdwexd");
         resList.add(res1);
         Result res2 = new Result("2","2015-2019","fjcwexdw","xdwxdewdx");
-        resList.add(res2);*/
-        Log.w("W","!!!");
+        resList.add(res2);
+        adapter = new ResAdapter(selStudyResult.this,R.layout.res_item,resList);
+        resListView.setAdapter(adapter);
 
+        resListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent toAddCourse = new Intent(selStudyResult.this,addCourse.class);
+                startActivity(toAddCourse);
+            }
+        });*/
 
     }
 
@@ -103,7 +115,7 @@ public class selStudyResult extends AppCompatActivity {
         task.execute(testUrl);
     }
 
-    //readTask用来调用智能合约的函数获得记录
+    //readRnumTask用来调用智能合约的函数获得记录数
     private  class readRnumTask extends  AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -132,6 +144,7 @@ public class selStudyResult extends AppCompatActivity {
         rtask.execute();
     }
 
+    //readRecordTask用来调用智能合约的函数获得每条记录
     private  class readRecordTask extends  AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -149,7 +162,7 @@ public class selStudyResult extends AppCompatActivity {
                 }
                 result = recordTime;
                 Log.w("!!!",result);
-                retReadAllState = true;
+                //retReadAllState = true;
             } catch (Exception e) {
                 result = e.getMessage();
                 Log.w("!!!",e.getMessage());
@@ -162,6 +175,21 @@ public class selStudyResult extends AppCompatActivity {
             Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
             adapter = new ResAdapter(selStudyResult.this,R.layout.res_item,resList);
             resListView.setAdapter(adapter);
+            resListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String theuniversity = resList.get(i).theSchool;
+                    String thetime = resList.get(i).theTime;
+                    Bundle forCourse = new Bundle();
+                    forCourse.putString("useraddress",useraddress);
+                    forCourse.putString("privatekey",privatekey);
+                    forCourse.putString("university",theuniversity);
+                    forCourse.putString("time",thetime);
+                    Intent toCourselist = new Intent(selStudyResult.this,addCourseforStu.class);
+                    toCourselist.putExtras(forCourse);
+                    startActivity(toCourselist);
+                }
+            });
         }
     }
 

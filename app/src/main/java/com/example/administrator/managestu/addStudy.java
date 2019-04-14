@@ -35,7 +35,7 @@ public class addStudy extends AppCompatActivity {
 
     //连接到以太坊测试网络
     String testUrl = "https://ropsten.infura.io/v3/06e4b5119d0240c6afb64bbb988e9421";//以太坊测试网络
-    String contractAdd = "0x09463f7413fc287ee34510c8be94565a60463844";
+    String contractAdd = "0x074f662cccc086bb12c8dc0efa38e02f53e2c378";
     Web3j web3j;
     Credentials credentials;
     long minigaslimit = 210000*2L;//gaslimit min 210000

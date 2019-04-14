@@ -7,7 +7,7 @@ public class Result {
         String theConfirmName;
 
         public Result(String  _number,String _time, String _school, String _confirmname) {
-            theNumber = _number;
+            this.theNumber = _number;
             this.theTime = _time;
             this.theSchool = _school;
             this.theConfirmName = _confirmname;

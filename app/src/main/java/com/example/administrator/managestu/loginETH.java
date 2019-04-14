@@ -27,6 +27,7 @@ public class loginETH extends AppCompatActivity {
         Bundle ethInfo = new Bundle();
         useraddress = uadd.getText().toString();
         privatekey = upkey.getText().toString();
+
         ethInfo.putString("useraddress",useraddress);
         ethInfo.putString("privatekey",privatekey);
 

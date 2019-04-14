@@ -1,13 +1,17 @@
 package com.example.administrator.managestu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.kenai.jffi.Main;
 
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
@@ -23,7 +27,7 @@ public class MainActivity_register extends AppCompatActivity {
     String useraddress ;//账户地址
     String privatekey ;//账户私钥
     String testUrl = "https://ropsten.infura.io/v3/06e4b5119d0240c6afb64bbb988e9421";//以太坊测试网络
-    String contractAdd = "0x09463f7413fc287ee34510c8be94565a60463844";
+    String contractAdd = "0x074f662cccc086bb12c8dc0efa38e02f53e2c378";
     Web3j web3j;
     Credentials credentials;
     long minigaslimit = 210000*2L;//gaslimit min 210000
@@ -44,6 +48,8 @@ public class MainActivity_register extends AppCompatActivity {
     EditText add_state;
     String astate;
 
+    boolean isregistered = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +67,7 @@ public class MainActivity_register extends AppCompatActivity {
 
         initWeb3j();
         initCredential(privatekey);
-        Log.w("!!!","init");
+        //Log.w("!!!","init");
 
     }
 
@@ -96,6 +102,55 @@ public class MainActivity_register extends AppCompatActivity {
         InitWeb3jTask task = new InitWeb3jTask();
         task.execute(testUrl);
     }
+
+    //checkregister
+    private  class checkTask extends  AsyncTask<String, String, String> {
+        @Override
+        protected  String doInBackground(String... params) {
+            String result;
+            StudyManage studyManage = StudyManage.load(contractAdd,web3j,credentials,gasPrice,gasLimit);
+            try {
+                isregistered = studyManage.checkRegist(useraddress).send();
+                result = String.valueOf(isregistered);
+                Log.w("!!!","check:"+result);
+            } catch (Exception e) {
+                result = e.getMessage();
+                Log.w("!!!",e.toString());
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
+
+            if(!isregistered){
+                writetoblock();
+            }
+            else{
+                AlertDialog.Builder hasRegisted = new AlertDialog.Builder(MainActivity_register.this);
+                hasRegisted.setTitle("警告");
+                hasRegisted.setMessage("此账号已注册，请直接登录。");
+                hasRegisted.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent toLogin = new Intent(MainActivity_register.this,MainActivity_forlogin.class);
+                        MainActivity_register.this.finish();
+                        startActivity(toLogin);
+                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                    }
+                });
+                hasRegisted.show();
+            }
+        }
+    }
+
+    void checkRegblock(){
+        checkTask wtask = new checkTask();
+        wtask.execute();
+    }
+
     //addPerson
     private  class writeTask extends  AsyncTask<String, String, String> {
         @Override
@@ -106,11 +161,12 @@ public class MainActivity_register extends AppCompatActivity {
             BigInteger state = new BigInteger(astate);
             try {
                 RemoteCall<TransactionReceipt> addPer = studyManage.addPerson(useraddress,aname,apwd,asex,age,state);
-                result = addPer.send().getStatus().toString();
-                Log.w("!!!!",result);
+                result = addPer.send().getStatus();
+                Log.w("!!!","registerAddandName:"+useraddress+";"+aname);
+                Log.w("!!!","register:"+result);
             } catch (Exception e) {
                 result = e.getMessage();
-                Log.w("!!!",e.getMessage());
+                Log.w("!!!",e.toString());
             }
             return result;
         }
@@ -135,8 +191,10 @@ public class MainActivity_register extends AppCompatActivity {
         asex = add_sex.getText().toString();
         aage = add_age.getText().toString();
         astate = add_state.getText().toString();
-        Log.w("!!!","!!!");
-        writetoblock();
+
+        Log.w("!!!","register");
+        checkRegblock();
+        //writetoblock();
         //Intent toForlogin = new Intent(MainActivity_register.this,MainActivity_forlogin.class);
         //finish();
         //startActivity(toForlogin);

@@ -3,6 +3,7 @@ package com.example.administrator.managestu;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ public class adminLogin extends AppCompatActivity {
     String useraddress;
     String privatekey;
     String name;
-    String sexy;
+    String sex;
     String age;
     TextView nameText;
     TextView sexyText;
@@ -24,16 +25,17 @@ public class adminLogin extends AppCompatActivity {
 
         loginInfo = this.getIntent().getExtras();
         name = loginInfo.getString("name");
-        sexy = loginInfo.getString("sex");
+        sex = loginInfo.getString("sex");
         age = loginInfo.getString("age");
         useraddress = loginInfo.getString("useraddress");
         privatekey = loginInfo.getString("privatekey");
+        Log.w("!!!","schlogin:"+useraddress);
 
         nameText = (TextView) findViewById(R.id.getInfoName);
         sexyText = (TextView) findViewById(R.id.getInfoSexy);
         ageText = (TextView) findViewById(R.id.getInfoAge);
         nameText.setText(name);
-        sexyText.setText(sexy);
+        sexyText.setText(sex);
         ageText.setText(age);
     }
 
