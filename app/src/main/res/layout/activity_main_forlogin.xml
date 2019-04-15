@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome"
         android:textSize="24sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,11 +55,12 @@
         android:layout_height="wrap_content"
         android:text="密码："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintVertical_bias="0.28" />
 
     <EditText
@@ -82,11 +84,12 @@
         android:layout_height="wrap_content"
         android:text="身份："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintVertical_bias="0.38" />
 
     <EditText

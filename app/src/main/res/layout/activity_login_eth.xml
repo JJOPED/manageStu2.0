@@ -6,18 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".loginETH">
 
+    <!--<TextView
+        android:id="@+id/welToETH"
+        android:text="我们需要一些账户信息"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        -->
+
     <TextView
         android:id="@+id/eth_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="地址："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.25" />
 
     <EditText
         android:id="@+id/editeth_Add"
@@ -32,7 +40,7 @@
         app:layout_constraintStart_toEndOf="@id/eth_add"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.195"/>
+        app:layout_constraintVertical_bias="0.23"/>
 
     <TextView
         android:id="@+id/eth_pkey"
@@ -40,11 +48,12 @@
         android:layout_height="wrap_content"
         android:text="私钥："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@id/eth_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintVertical_bias="0.07" />
     <EditText
         android:id="@+id/editeth_Pkey"
@@ -54,26 +63,25 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textSize="20sp"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/eth_pkey"
         app:layout_constraintTop_toBottomOf="@id/editeth_Add"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.045"/>
+        app:layout_constraintVertical_bias="0.028"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:text="确认"
+        android:text="确认信息"
         android:textSize="20sp"
         android:onClick="loginETH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintVertical_bias="0.45"/>
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintVertical_bias="0.53"/>
 
 </android.support.constraint.ConstraintLayout>
