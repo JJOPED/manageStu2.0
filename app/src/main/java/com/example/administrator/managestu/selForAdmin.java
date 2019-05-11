@@ -1,10 +1,13 @@
 package com.example.administrator.managestu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -56,6 +59,9 @@ public class selForAdmin extends AppCompatActivity {
     List<Result> resList = new ArrayList<Result>();
     ListView resListView;
 
+    View loadmoreView;
+    LayoutInflater inflater;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +80,10 @@ public class selForAdmin extends AppCompatActivity {
         stuRec = (TextView) findViewById(R.id.stu_rnum);
         resListView = (ListView) findViewById(R.id.selResforAdmin);
 
+        inflater = LayoutInflater.from(this);
+        loadmoreView = inflater.inflate(R.layout.load_more,null);//获得刷新视图
+        loadmoreView.setVisibility(View.VISIBLE);//设置刷新视图默认不可显示
+
 
         Button buttonSelforAdmin = (Button) findViewById(R.id.selOK);
         //Log.w("W","!!!!");//ok
@@ -86,6 +96,21 @@ public class selForAdmin extends AppCompatActivity {
 
                 useraddress = inAdd.getText().toString();
                 Log.w("!!!","stuaddress:"+useraddress);
+
+                /*AlertDialog.Builder txstate = new AlertDialog.Builder(selForAdmin.this);
+                txstate.setTitle("提示：");
+                txstate.setMessage("请稍后···");
+                txstate.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                txstate.show();*/
+                Toast mToast;
+                mToast = Toast.makeText(selForAdmin.this, null, Toast.LENGTH_LONG);
+                mToast.setText("请稍等···");
+                mToast.show();
 
                 initResult();
 
@@ -134,7 +159,7 @@ public class selForAdmin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -165,7 +190,7 @@ public class selForAdmin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
             stuName.setText(pname);
             stuSex.setText(psex);
             stuAge.setText(page);
@@ -197,9 +222,18 @@ public class selForAdmin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
-            stuRec.setText(recordNum.toString());
-            readRecordfromblock();
+            if(result.equals("0")){
+                Toast mToast;
+                mToast = Toast.makeText(selForAdmin.this, null, Toast.LENGTH_LONG);
+                mToast.setText("学籍信息为空");
+                mToast.show();
+                return;
+            }
+            else {
+                //Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
+                stuRec.setText(recordNum.toString());
+                readRecordfromblock();
+            }
         }
     }
 
@@ -213,7 +247,9 @@ public class selForAdmin extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String result;
+            long start,end;
             BigInteger index = new BigInteger(params[0]);
+            start = System.currentTimeMillis();
             StudyManage studyManage = StudyManage.load(contractAdd, web3j, credentials, gasPrice, gasLimit);
             try {
                 for(;index.compareTo(recordNum)==-1;index=index.add(BigInteger.ONE)){
@@ -226,6 +262,8 @@ public class selForAdmin extends AppCompatActivity {
                 }
                 result = recordTime;
                 Log.w("!!!","recordresult:"+result);
+                end = System.currentTimeMillis();
+                Log.w("time:",String.valueOf(end - start));
             } catch (Exception e) {
                 result = e.getMessage();
                 Log.w("!!!","exception:"+e.toString());
@@ -235,7 +273,12 @@ public class selForAdmin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(selForAdmin.this, result, Toast.LENGTH_LONG).show();
+            Toast mToast;
+            mToast = Toast.makeText(selForAdmin.this, null, Toast.LENGTH_LONG);
+            mToast.setText("学籍信息读取完成");
+            mToast.show();
+
             adapter = new ResAdapter(selForAdmin.this,R.layout.res_item,resList);
             resListView.setAdapter(adapter);
             resListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,49 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/res_number"
-        android:textSize="20sp"
-        android:layout_width="100dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"/>
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/res_time"
-        android:textSize="20sp"
-        android:layout_width="100dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="80dp"
-        app:layout_constraintStart_toEndOf="@+id/res_number"/>
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/res_school"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="80dp"
-        app:layout_constraintStart_toEndOf="@+id/res_time"/>
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/res_confirmname"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="80dp"
-        app:layout_constraintStart_toEndOf="@+id/res_school" />
+        android:gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -11,6 +11,7 @@ import java.util.List;
 
 public class ResAdapter extends ArrayAdapter {
     private int resourceId;
+    public List<Result> list;
 
     public ResAdapter(Context context, int textViewResourceId, List<Result> objects) {
         super(context, textViewResourceId, objects);
@@ -32,5 +33,10 @@ public class ResAdapter extends ArrayAdapter {
         viewConfirmname.setText(res.getTheConfirmName());
 
         return view;
+    }
+
+    public void updateListView(List<Result> nowList){
+        this.list = nowList;
+        this.notifyDataSetChanged();//强制状态刷新数据进而调用getView方法
     }
 }

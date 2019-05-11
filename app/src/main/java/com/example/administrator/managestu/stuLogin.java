@@ -59,6 +59,11 @@ public class stuLogin extends AppCompatActivity {
         initCredential(privatekey);
         initWeb3j();
 
+        Toast mToast;
+        mToast = Toast.makeText(stuLogin.this, null, Toast.LENGTH_LONG);
+        mToast.setText("请稍等···");
+        mToast.show();
+
         readInfofromblock();
 
     }
@@ -85,7 +90,7 @@ public class stuLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(stuLogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(stuLogin.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -116,7 +121,7 @@ public class stuLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(stuLogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(stuLogin.this, result, Toast.LENGTH_LONG).show();
             nameText.setText(name);
             sexyText.setText(sex);
             ageText.setText(age);

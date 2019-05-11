@@ -58,6 +58,11 @@ public class adminLogin extends AppCompatActivity {
         initCredential(privatekey);
         initWeb3j();
 
+        Toast mToast;
+        mToast = Toast.makeText(adminLogin.this, null, Toast.LENGTH_LONG);
+        mToast.setText("请稍等···");
+        mToast.show();
+
         readInfofromblock();
 
     }
@@ -84,7 +89,7 @@ public class adminLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(adminLogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(adminLogin.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -115,7 +120,7 @@ public class adminLogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(adminLogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(adminLogin.this, result, Toast.LENGTH_LONG).show();
             nameText.setText(name);
             sexyText.setText(sex);
             ageText.setText(age);

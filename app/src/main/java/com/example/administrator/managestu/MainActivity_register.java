@@ -94,7 +94,7 @@ public class MainActivity_register extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -123,9 +123,20 @@ public class MainActivity_register extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
 
             if(!isregistered){
+                AlertDialog.Builder txstate = new AlertDialog.Builder(MainActivity_register.this);
+                txstate.setTitle("提示");
+                txstate.setMessage("请稍等···");
+                txstate.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                txstate.show();
+
                 writetoblock();
             }
             else{
@@ -174,7 +185,36 @@ public class MainActivity_register extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_register.this, result, Toast.LENGTH_LONG).show();
+            if(result.equals("0x1")){
+                AlertDialog.Builder isadd = new AlertDialog.Builder(MainActivity_register.this);
+                isadd.setTitle("提示");
+                isadd.setMessage("完成注册，请登录。");
+                isadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent toAdmin = new Intent(MainActivity_register.this, adminLogin.class);
+                        finish();
+                        startActivity(toAdmin);
+                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                        return;
+                    }
+                });
+                isadd.show();
+            }
+            else{
+                AlertDialog.Builder isnotadd = new AlertDialog.Builder(MainActivity_register.this);
+                isnotadd.setTitle("提示");
+                isnotadd.setMessage("未完成注册，请重试。");
+                isnotadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                isnotadd.show();
+            }
+
         }
     }
 

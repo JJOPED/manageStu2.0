@@ -1,6 +1,7 @@
 package com.example.administrator.managestu;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,7 @@ public class addCourse extends AppCompatActivity {
     EditText addGradeView;
     String addCourseName;
     String addCourseGrade;
+    //String addresult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,11 @@ public class addCourse extends AppCompatActivity {
 
         initWeb3j();
         initCredential(privatekey);
+
+        Toast mToast;
+        mToast = Toast.makeText(addCourse.this, null, Toast.LENGTH_LONG);
+        mToast.setText("请稍后···");
+        mToast.show();
 
         initCourse();
     }
@@ -111,7 +118,7 @@ public class addCourse extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -132,6 +139,7 @@ public class addCourse extends AppCompatActivity {
                 Log.w("!!!","result:"+result);
             } catch (Exception e) {
                 result = e.getMessage();
+                //result = "0";
                 Log.w("!!!","exception"+e.toString());
             }
             return result;
@@ -139,8 +147,17 @@ public class addCourse extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
-            readCoursefromblock();
+            //Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
+            if(result.equals("0")){
+                Toast mToast;
+                mToast = Toast.makeText(addCourse.this, null, Toast.LENGTH_LONG);
+                mToast.setText("课程信息为空");
+                mToast.show();
+                return;
+            }
+            else{
+                readCoursefromblock();
+            }
         }
     }
 
@@ -175,17 +192,23 @@ public class addCourse extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
+            Toast mToast;
+            mToast = Toast.makeText(addCourse.this, null, Toast.LENGTH_LONG);
+            mToast.setText("课程信息读取完成");
+            mToast.show();
+
             adapter = new CourAdapter(addCourse.this,R.layout.course_item,courseList);
             courseListView.setAdapter(adapter);
         }
     }
     void readCoursefromblock(){
+        courseList.clear();
         readCourseTask rtask = new readCourseTask();
         rtask.execute("0");
     }
 
-    //addCourseTask用来调用智能合约的函数获得每条记录
+    //addCourseTask用来调用智能合约的函数增加课程记录
     private  class addCourseTask extends  AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -194,6 +217,7 @@ public class addCourse extends AppCompatActivity {
             try {
                 RemoteCall<TransactionReceipt> addcourse = studyManage.addCourse(addanduniandtime,addCourseName,addCourseGrade);
                 result = addcourse.send().getStatus();
+                //addresult = result;
                 Log.w("!!!",result);
             } catch (Exception e) {
                 result = e.getMessage();
@@ -204,9 +228,43 @@ public class addCourse extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
-            adapter = new CourAdapter(addCourse.this,R.layout.course_item,courseList);
-            courseListView.setAdapter(adapter);
+            //Toast.makeText(addCourse.this, result, Toast.LENGTH_LONG).show();
+            /*
+            AlertDialog.Builder txstate = new AlertDialog.Builder(addCourse.this);
+            txstate.setTitle("提示：");
+            txstate.setMessage("请稍后");
+            txstate.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    return;
+                }
+            });
+            txstate.show();*/
+            if(result.equals("0x1")){
+                AlertDialog.Builder isadd = new AlertDialog.Builder(addCourse.this);
+                isadd.setTitle("提示");
+                isadd.setMessage("成功添加课程信息,请点击确定刷新。");
+                isadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        readCnumfromblock();
+                        return;
+                    }
+                });
+                isadd.show();
+            }
+            else{
+                AlertDialog.Builder isnotadd = new AlertDialog.Builder(addCourse.this);
+                isnotadd.setTitle("提示");
+                isnotadd.setMessage("未完成新增课程信息，可能是私钥或网络问题，请重试。");
+                isnotadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                isnotadd.show();
+            }
         }
     }
 
@@ -232,6 +290,17 @@ public class addCourse extends AppCompatActivity {
                 addCourseGrade = addGradeView.getText().toString();
 
                 Log.w("!!!",addCourseName+addCourseGrade);
+
+                AlertDialog.Builder txstate = new AlertDialog.Builder(addCourse.this);
+                txstate.setTitle("提示");
+                txstate.setMessage("请稍等···");
+                txstate.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                txstate.show();
 
                 addCourseToblock();
 

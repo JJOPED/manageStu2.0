@@ -58,6 +58,11 @@ public class selStudyResult extends AppCompatActivity {
         privatekey = userInfo.getString("privatekey");
         initCredential(privatekey);
 
+        Toast mToast;
+        mToast = Toast.makeText(selStudyResult.this, null, Toast.LENGTH_LONG);
+        mToast.setText("请稍等···");
+        mToast.show();
+
         resListView = (ListView) findViewById(R.id.stuList);
         initResult();
 
@@ -106,7 +111,7 @@ public class selStudyResult extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -134,8 +139,17 @@ public class selStudyResult extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
-            readRecordfromblock();
+            //Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
+            if(result.equals("0")){
+                Toast mToast;
+                mToast = Toast.makeText(selStudyResult.this, null, Toast.LENGTH_LONG);
+                mToast.setText("学籍信息为空");
+                mToast.show();
+                return;
+            }
+            else{
+                readRecordfromblock();
+            }
         }
     }
 
@@ -172,7 +186,13 @@ public class selStudyResult extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(selStudyResult.this, result, Toast.LENGTH_LONG).show();
+
+            Toast mToast;
+            mToast = Toast.makeText(selStudyResult.this, null, Toast.LENGTH_LONG);
+            mToast.setText("学籍信息读取完成");
+            mToast.show();
+
             adapter = new ResAdapter(selStudyResult.this,R.layout.res_item,resList);
             resListView.setAdapter(adapter);
             resListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -121,7 +121,7 @@ public class MainActivity_forlogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -150,7 +150,7 @@ public class MainActivity_forlogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
 
             if(isregistered){
                 readfromblock();
@@ -198,7 +198,8 @@ public class MainActivity_forlogin extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity_forlogin.this, result, Toast.LENGTH_LONG).show();
+
             Bundle loginInfo = new Bundle();//存储登录的信息以及地址和私钥
             loginInfo.putString("useraddress",useraddress);
             loginInfo.putString("privatekey",privatekey);

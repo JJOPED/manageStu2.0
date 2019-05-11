@@ -1,6 +1,7 @@
 package com.example.administrator.managestu;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +79,18 @@ public class addStudy extends AppCompatActivity {
         addnewStudy.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                AlertDialog.Builder txstate = new AlertDialog.Builder(addStudy.this);
+                txstate.setTitle("提示");
+                txstate.setMessage("请稍等···");
+                txstate.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                txstate.show();
+
                 //通过调用智能合约的函数写入区块链
                 readfromblock();
                 return ;
@@ -118,7 +131,7 @@ public class addStudy extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-            Toast.makeText(addStudy.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(addStudy.this, result, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -146,7 +159,35 @@ public class addStudy extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(addStudy.this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(addStudy.this, result, Toast.LENGTH_LONG).show();
+            if(result.equals("0x1")){
+                AlertDialog.Builder isadd = new AlertDialog.Builder(addStudy.this);
+                isadd.setTitle("提示");
+                isadd.setMessage("成功添加学籍信息。");
+                isadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent toAdmin = new Intent(addStudy.this, adminLogin.class);
+                        finish();
+                        startActivity(toAdmin);
+                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                        return;
+                    }
+                });
+                isadd.show();
+            }
+            else{
+                AlertDialog.Builder isnotadd = new AlertDialog.Builder(addStudy.this);
+                isnotadd.setTitle("提示");
+                isnotadd.setMessage("未完成学籍信息添加,可能是私钥或网络问题，请重试。");
+                isnotadd.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                isnotadd.show();
+            }
         }
     }
 

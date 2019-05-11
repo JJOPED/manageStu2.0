@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:text="注册"
         android:textSize="24sp"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintVertical_bias="0.05" />
 
     <!--
@@ -55,12 +56,13 @@
         android:layout_height="wrap_content"
         android:text="姓名："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.045"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.1"/>
 
     <EditText
         android:id="@+id/editRName"
@@ -74,8 +76,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/textRPwd"
@@ -83,12 +85,13 @@
         android:layout_height="wrap_content"
         android:text="密码："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRName"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.040"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.2"/>
 
     <EditText
         android:id="@+id/editRPwd"
@@ -98,12 +101,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRName"
+        app:layout_constraintTop_toBottomOf="@id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRPwd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0094" />
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.185" />
 
     <TextView
         android:id="@+id/textRSex"
@@ -111,12 +114,13 @@
         android:layout_height="wrap_content"
         android:text="性别："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRPwd"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.040"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.3"/>
 
     <EditText
         android:id="@+id/editRSex"
@@ -126,12 +130,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRPwd"
+        app:layout_constraintTop_toBottomOf="@id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRSex"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.29" />
 
     <TextView
         android:id="@+id/textRAge"
@@ -139,12 +143,13 @@
         android:layout_height="wrap_content"
         android:text="年龄："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRSex"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.040"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.4"/>
 
     <EditText
         android:id="@+id/editRAge"
@@ -154,12 +159,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRSex"
+        app:layout_constraintTop_toBottomOf="@id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0060" />
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.39" />
 
     <TextView
         android:id="@+id/textRState"
@@ -167,12 +172,13 @@
         android:layout_height="wrap_content"
         android:text="身份："
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textRAge"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.30"
-        app:layout_constraintVertical_bias="0.040"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.5"/>
 
     <EditText
         android:id="@+id/editRState"
@@ -182,12 +188,12 @@
         android:textSize="20sp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintTop_toBottomOf="@id/editRAge"
+        app:layout_constraintTop_toBottomOf="@id/textReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textRState"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintVertical_bias="0.0055" />
+        app:layout_constraintVertical_bias="0.50" />
 
     <Button
         android:id="@+id/buttonROK"
@@ -199,8 +205,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textReg"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintVertical_bias="0.55"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintVertical_bias="0.70"
         android:onClick="registerOK"/>
 
 </android.support.constraint.ConstraintLayout>

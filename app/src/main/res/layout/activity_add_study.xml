@@ -26,12 +26,13 @@
         android:layout_height="wrap_content"
         android:text="地址："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addText"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintVertical_bias="0.05"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.1"/>
 
     <EditText
         android:id="@+id/newAdd"
@@ -46,7 +47,7 @@
         app:layout_constraintStart_toEndOf="@id/addAdd"
         app:layout_constraintTop_toBottomOf="@id/addText"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintVertical_bias="0.04"/>
+        app:layout_constraintVertical_bias="0.09"/>
 
     <TextView
         android:id="@+id/addTime"
@@ -54,12 +55,13 @@
         android:layout_height="wrap_content"
         android:text="时间："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addAdd"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintVertical_bias="0.05"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.1"/>
 
     <EditText
         android:id="@+id/newTime"
@@ -74,7 +76,7 @@
         app:layout_constraintStart_toEndOf="@id/addTime"
         app:layout_constraintTop_toBottomOf="@id/addAdd"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintVertical_bias="0.04"/>
+        app:layout_constraintVertical_bias="0.09"/>
 
     <TextView
         android:id="@+id/addSchool"
@@ -82,12 +84,13 @@
         android:layout_height="wrap_content"
         android:text="学校："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addTime"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintVertical_bias="0.05"/>
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintVertical_bias="0.12"/>
 
     <EditText
         android:id="@+id/newSchool"
@@ -102,7 +105,7 @@
         app:layout_constraintStart_toEndOf="@id/addTime"
         app:layout_constraintTop_toBottomOf="@id/addTime"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintVertical_bias="0.04"/>
+        app:layout_constraintVertical_bias="0.099"/>
 
     <Button
         android:id="@+id/addOK"
@@ -115,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addSchool"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintVertical_bias="0.10"/>
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintVertical_bias="0.15"/>
 
 </android.support.constraint.ConstraintLayout>

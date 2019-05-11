@@ -88,15 +88,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textPwd"
         app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <EditText
         android:id="@+id/editState"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:hint="0 student 1 school"
         android:textSize="20sp"
         android:maxLines="1"
@@ -104,6 +103,8 @@
         app:layout_constraintTop_toBottomOf="@id/editPwd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/textState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintVertical_bias="0.075" />
 
     <Button

@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="姓名："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoState"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoState"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/setInfoName"
@@ -50,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="性别："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/setInfoSexy"
@@ -75,6 +79,7 @@
         android:layout_height="wrap_content"
         android:text="年龄："
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoSexy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/setInfoSexy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/setInfoAge"
@@ -94,6 +100,16 @@
         app:layout_constraintHorizontal_bias="0.10"
         app:layout_constraintVertical_bias="0.05"/>
 
+    <LinearLayout
+        android:id="@+id/buttonlist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/selforStu"
         android:layout_width="wrap_content"
@@ -101,12 +117,7 @@
         android:text="学籍查询"
         android:textSize="20sp"
         android:onClick="selForSch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setInfoAge"
-        app:layout_constraintHorizontal_bias="0.65"
-        app:layout_constraintVertical_bias="0.15"/>
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/addforStu"
@@ -115,12 +126,9 @@
         android:text="学籍录入"
         android:textSize="20sp"
         android:onClick="insForSch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selforStu"
-        app:layout_constraintTop_toBottomOf="@+id/setInfoAge"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintVertical_bias="0.15"/>
+        android:layout_weight="1"/>
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
