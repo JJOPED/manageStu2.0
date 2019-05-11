@@ -82,7 +82,7 @@ public class addCourse extends AppCompatActivity {
 
         Toast mToast;
         mToast = Toast.makeText(addCourse.this, null, Toast.LENGTH_LONG);
-        mToast.setText("请稍后···");
+        mToast.setText("请稍等···");
         mToast.show();
 
         initCourse();
